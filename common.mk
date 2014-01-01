@@ -27,28 +27,26 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Init files
 PRODUCT_COPY_FILES := \
-    $(COMMON_PATH)/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
-    $(COMMON_PATH)/lpm.rc:root/lpm.rc \
-    $(COMMON_PATH)/init.trace.rc:root/init.trace.rc \
-    $(COMMON_PATH)/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
-    $(COMMON_PATH)/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
+    $(COMMON_PATH)/rootdir/init.smdk4x12.rc:root/init.smdk4x12.rc \
+    $(COMMON_PATH)/rootdir/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
+    $(COMMON_PATH)/rootdir/lpm.rc:root/lpm.rc \
+    $(COMMON_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
+    $(COMMON_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
+    $(COMMON_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+    $(COMMON_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_PATH)/audio/silence.wav:system/etc/sound/silence.wav
 
 # Camera FW
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
 
-# Vold and Storage
+# Netflix hack
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/vold.fstab:system/etc/vold.fstab
-
-# Bluetooth configuration files
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+    $(COMMON_PATH)/configs/98netflix:system/etc/init.d/98netflix
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -67,8 +65,6 @@ PRODUCT_PACKAGES := \
     audio.a2dp.default \
     audio.primary.smdk4x12 \
     audio.usb.default \
-    camera.exynos4 \
-    Camera \
     com.android.future.usb.accessory \
     gralloc.exynos4 \
     hwcomposer.exynos4 \
@@ -122,7 +118,9 @@ PRODUCT_PACKAGES += \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -148,9 +146,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
+# Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zygote.disable_gl_preload=1 \
     ro.opengles.version=131072 \
-    hwui.render_dirty_regions=false
+    ro.bq.gpu_to_cpu_unsupported=1 \
+    debug.hwui.render_dirty_regions=false
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -165,5 +166,5 @@ TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 $(call inherit-product, hardware/samsung/exynos4x12.mk)
 
-# Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/samsung/smdk4412-common/common-vendor.mk)
+# Include non-opensource parts
+$(call inherit-product, vendor/samsung/smdk4412-common/common-vendor.mk)
