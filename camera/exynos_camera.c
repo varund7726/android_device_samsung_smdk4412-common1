@@ -4382,7 +4382,6 @@ int exynos_camera_send_command(struct camera_device *dev,
 	ALOGD("%s(%p, %d, %d, %d)", __func__, dev, cmd, arg1, arg2);
 	switch (cmd) {
 		case CAMERA_CMD_START_FACE_DETECTION:
-<<<<<<< HEAD
 			if (setFaceDetect(exynos_camera, FACE_DETECTION_ON) < 0) {
 				ALOGE("ERR: Fail on setFaceDetect(ON)");
 				return -EINVAL;
@@ -4397,9 +4396,6 @@ int exynos_camera_send_command(struct camera_device *dev,
 			} else {
 				return 0;
 			}
-=======
-			return -EINVAL;
->>>>>>> 29f1fbf... camera: Fix android.hardware.cts.CameraTest#testFaceDetection
 			break;
 		default:
 			break;
