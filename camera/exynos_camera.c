@@ -644,7 +644,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 	int fimc_is_mode = 0;
 
 	char *focus_mode_string;
-	int focus_mode = 0;
+	int focus_mode = FOCUS_MODE_DEFAULT;
 	char *focus_areas_string;
 	int focus_left, focus_top, focus_right, focus_bottom, focus_weight;
 	int focus_x;
@@ -914,6 +914,9 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 					ALOGE("%s: Unable to set object y position", __func__);
 			}
 		}
+
+		focus_mode = FOCUS_MODE_TOUCH;
+
 	}
 
 	// Zoom
@@ -1000,7 +1003,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 				ALOGE("%s: Unable to set scene mode", __func__);
 		}
 
-		if (scene_mode != SCENE_MODE_NONE && !flash_mode && !focus_mode) {
+		if (scene_mode != SCENE_MODE_NONE && !flash_mode && focus_mode == FOCUS_MODE_DEFAULT) {
 			flash_mode = FLASH_MODE_OFF;
 			focus_mode = FOCUS_MODE_AUTO;
 		}
@@ -1048,7 +1051,7 @@ int exynos_camera_params_apply(struct exynos_camera *exynos_camera, int force)
 
 	focus_mode_string = exynos_param_string_get(exynos_camera, "focus-mode");
 	if (focus_mode_string != NULL) {
-		if (focus_mode == 0) {
+		if (focus_mode == FOCUS_MODE_DEFAULT) {
 			if (strcmp(focus_mode_string, "auto") == 0)
 				focus_mode = FOCUS_MODE_AUTO;
 			else if (strcmp(focus_mode_string, "infinity") == 0)
