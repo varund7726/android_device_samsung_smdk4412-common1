@@ -18,7 +18,6 @@
 -->
 
 <resources>
-<<<<<<< HEAD:overlay/packages/apps/Camera2/res/values/config.xml
     <!-- Allows setting video size before recording starts -->
     <bool name="needsEarlyVideoSize">true</bool>
     <!-- The camera removes the focus modes by default when touch-to-focus
@@ -27,8 +26,4 @@
     <!-- Use ZSL mode -->
     <bool name="enableZSL">true</bool>
     <bool name="useContinuosFocusForTouch">true</bool>
-=======
-    <!-- Use ZSL mode -->
-    <bool name="enableZSL">true</bool>
->>>>>>> f19e410... smdk4412-common: rename Gallery2 -> Camera2:overlay/packages/apps/Camera2/res/values/config.xml
 </resources>
