@@ -517,4 +517,5 @@
       Codec = mpeg4, Simple profile, level 5
     -->
     <ExportVideoProfile name="m4v" profile= "1" level="128"/>
-</MediaSettings
+    
+</MediaSettings>
