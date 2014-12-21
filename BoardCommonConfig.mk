@@ -113,7 +113,6 @@ TARGET_USES_LOGD := false
 BOARD_USES_LEGACY_MMAP := true
 
 # Wifi
-BOARD_NO_WIFI_HAL                := true
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4334
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
