@@ -134,6 +134,10 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     wpa_supplicant
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
