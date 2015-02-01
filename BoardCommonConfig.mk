@@ -77,9 +77,6 @@ USE_OPENGL_RENDERER := true
 BOARD_USES_SKIAHWJPEG := true
 COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D -DWORKAROUND_BUG_10194508 -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
 
-# HWC
-BOARD_USES_PROPRIETARY_HWC := true
-
 # FIMG Acceleration
 BOARD_USES_FIMGAPI := true
 BOARD_USES_SKIA_FIMGAPI := true
@@ -92,9 +89,15 @@ BOARD_USES_HDMI := true
 BOARD_USES_SAMSUNG_HDMI := true
 BOARD_HDMI_DDC_CH := DDC_CH_I2C_5
 
+# HWComposer
+BOARD_USES_PROPRIETARY_HWC := true
+#BOARD_USES_HWCOMPOSER := true
+#BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
+
 # Camera
 BOARD_CAMERA_HAVE_ISO := true
 COMMON_GLOBAL_CFLAGS += -DHAVE_ISO
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
 
 # OMX
@@ -114,6 +117,9 @@ TARGET_USES_LOGD := false
 
 BOARD_USES_LEGACY_MMAP := true
 
+# RIL
+BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
+
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4334
@@ -123,13 +129,13 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
-WIFI_DRIVER_MODULE_NAME          := "dhd"
-WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/wifi/bcmdhd_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
-WIFI_DRIVER_MODULE_AP_ARG        := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/wifi/bcmdhd_p2p.bin"
+WIFI_DRIVER_MODULE_NAME          := "dhd"
+WIFI_DRIVER_MODULE_ARG           := "firmware_path=/system/etc/wifi/bcmdhd_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
+WIFI_DRIVER_MODULE_AP_ARG        := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin nvram_path=/system/etc/wifi/nvram_net.txt"
 WIFI_BAND                        := 802_11_ABG
 BOARD_HAVE_SAMSUNG_WIFI          := true
 

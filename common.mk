@@ -127,12 +127,14 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
-#wifi
+
+# Wifi
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
     dhcpcd.conf \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Charger
 PRODUCT_PACKAGES += \
