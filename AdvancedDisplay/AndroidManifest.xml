@@ -29,6 +29,7 @@
         </receiver>
 
         <activity android:name=".ScreenFragmentActivity" />
+        <activity android:name=".RadioFragmentActivity" />
         
     </application>
 </manifest>

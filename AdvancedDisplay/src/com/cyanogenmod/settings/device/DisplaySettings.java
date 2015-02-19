@@ -60,11 +60,15 @@ public class DisplaySettings extends FragmentActivity {
 
         final ActionBar bar = getActionBar();
         bar.setTitle(R.string.app_name);
+        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE, ActionBar.DISPLAY_SHOW_TITLE);
         bar.setDisplayHomeAsUpEnabled(true);
 
         mTabsAdapter = new TabsAdapter(this, mViewPager);
         mTabsAdapter.addTab(bar.newTab().setText(R.string.category_screen_title),
                 ScreenFragmentActivity.class, null);
+        mTabsAdapter.addTab(bar.newTab().setText(R.string.category_radio_title),
+                RadioFragmentActivity.class, null);
 
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
