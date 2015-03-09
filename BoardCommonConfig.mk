@@ -31,6 +31,10 @@ TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
+# Board already specifies -mcpu, but it won't hurt to add mtune, too
+BOARD_GLOBAL_CFLAGS += -mtune=cortex-a9
+BOARD_GLOBAL_CPPLAGS += -mtune=cortex-a9
+
 # Specify L1/L2 caches used for Exynos 4412
 BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=1024
 BOARD_GLOBAL_CPPLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=1024
