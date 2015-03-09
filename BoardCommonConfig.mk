@@ -31,12 +31,9 @@ TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-device_flags := -mtune=cortex-a9 --param l1-cache-size=32 --param l1-cache-line-size=32 --param l2-cache-size=1024
-
-TARGET_GLOBAL_CFLAGS += $(device_flags)
-TARGET_GLOBAL_CPPFLAGS += $(device_flags)
-BOARD_GLOBAL_CFLAGS += $(device_flags)
-BOARD_GLOBAL_CPPFLAGS += $(device_flags)
+# Specify L1/L2 caches used for Exynos 4412
+BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=1024
+BOARD_GLOBAL_CPPLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=1024
 
 EXYNOS4X12_ENHANCEMENTS := true
 EXYNOS4_ENHANCEMENTS := true
