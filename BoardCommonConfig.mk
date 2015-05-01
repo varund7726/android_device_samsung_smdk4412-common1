@@ -129,6 +129,8 @@ BOARD_USES_LEGACY_MMAP := true
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
+BOARD_RIL_CLASS := ../../../hardware/samsung/exynos4/ril
+#BOARD_PROVIDES_LIBRIL and BOARD_MODEM_TYPE are still in device specific makefile
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -188,3 +190,19 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # inherit from the proprietary version
 -include vendor/samsung/smdk4412-common/BoardConfigVendor.mk
+
+# TWRP
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+HAVE_SELINUX := true
+TW_INCLUDE_JB_CRYPTO := true
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_MAX_BRIGHTNESS := 255
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
+TW_DISABLE_TTF := true
