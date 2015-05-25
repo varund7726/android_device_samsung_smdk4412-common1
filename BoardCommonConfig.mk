@@ -40,8 +40,6 @@ BOARD_GLOBAL_CFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --
 BOARD_GLOBAL_CPPFLAGS += --param l1-cache-line-size=32 --param l1-cache-size=32 --param l2-cache-size=1024
 
 # Hint the compiler that we're using quad-core CPU
-BOARD_GLOBAL_CFLAGS += -mvectorize-with-neon-quad
-BOARD_GLOBAL_CPPFLAGS += -mvectorize-with-neon-quad
 
 EXYNOS4X12_ENHANCEMENTS := true
 EXYNOS4_ENHANCEMENTS := true
@@ -207,3 +205,14 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_DISABLE_TTF := true
+
+#RR
+TARGET_TC_ROM := 4.8-linaro
+RROPTI := true
+RR_O3 := true
+RR_STRICT := false
+RR_GRAPHITE := false
+RR_KRAIT := false
+RR_PIPE := true
+RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+RR_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
