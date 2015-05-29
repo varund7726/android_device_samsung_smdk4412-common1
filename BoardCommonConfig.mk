@@ -54,7 +54,6 @@ BOARD_VENDOR := samsung
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_SOC := exynos4x12
 TARGET_BOOTLOADER_BOARD_NAME := smdk4x12
-
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
@@ -117,7 +116,7 @@ BOARD_USE_METADATABUFFERTYPE := true
 BOARD_USES_MFC_FPS := true
 BOARD_USE_S3D_SUPPORT := true
 BOARD_USE_CSC_FIMC := false
-BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
+
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -207,13 +206,4 @@ TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
 TW_DISABLE_TTF := true
 
-#RR
-TARGET_TC_ROM := 4.8-linaro
-RROPTI := true
-RR_O3 := true
-RR_STRICT := false
-RR_GRAPHITE := false
-RR_KRAIT := false
-RR_PIPE := true
-RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
-RR_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
